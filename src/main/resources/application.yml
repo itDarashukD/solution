@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active:
+      - dev
+
+  application:
+    name: "solution"
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+
+path:
+  local:
+    storage: C:\\Users\\Dzmitry_Darashuk\\Desktop\\demo\\solution\solution\\src\\main\\resources\\localStorage
+
+server:
+  port: 8080
+
+
+
+name: test-YAML
+environment: testing
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+name: prod-YAML
+environment: production
+
+
+---
+
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/solution
+    username: root
+    password: root
+
+path:
+  local:
+    storage: C:\\Users\\Dzmitry_Darashuk\\Desktop\\demo\\solution\solution\\src\\main\\resources\\localStorage
+
+
+
+name: ${DEV_NAME:dev-YAML}
+environment: development
+
+server:
+  port: 8080
+
+
