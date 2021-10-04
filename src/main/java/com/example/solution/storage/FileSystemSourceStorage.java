@@ -43,15 +43,4 @@ public class FileSystemSourceStorage implements EmployeeSourceService {
         }
         return "File"+ originalFilename + "saved";
     }
-
-//    public InputStream getInputStream(File file) {
-//        InputStream inputStream = InputStream.nullInputStream();
-//        try {
-//            inputStream = new FileInputStream(file);
-//        } catch (FileNotFoundException e) {
-//            log.info(e.getMessage());
-//        }
-//        return inputStream;
-//
-//    }
 }

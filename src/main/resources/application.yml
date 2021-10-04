@@ -12,6 +12,15 @@ spring:
     activate:
       on-profile: test
 
+path:
+  local:
+    storage: C:\\Users\\Dzmitry_Darashuk\\Desktop\\demo\\solution\solution\\src\\main\\resources\\localStorage
+
+server:
+  port: 8080
+
+
+
 name: test-YAML
 environment: testing
 
@@ -41,7 +50,7 @@ spring:
 
 path:
   local:
-    storage: C:\\Users\\Dzmitry_Darashuk\\Desktop\\demo\\solution]\solution\\src\\main\\resources\\localStorage
+    storage: C:\\Users\\Dzmitry_Darashuk\\Desktop\\demo\\solution\solution\\src\\main\\resources\\localStorage
 
 
 

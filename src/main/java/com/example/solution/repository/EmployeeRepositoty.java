@@ -2,19 +2,25 @@ package com.example.solution.repository;
 
 import com.example.solution.entity.Employee;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.data.repository.query.*;
 
 @Mapper
 public interface EmployeeRepositoty {
 
-        @Insert("Insert into Employee(name,processId,flowId, idempotenceUuid,cv_file) values (#{name},#{processId},#{flowId},#{idempotenceUuid},#{cv_file})")
-        @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-        void save(Employee employee);
+    @Insert("Insert into Employee(name,processId,flowId, idempotenceUuid,cv_file) values (#{name},#{processId},#{flowId},#{idempotenceUuid},#{cv_file})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    void save(Employee employee);
 
-        @Update("Update Song set year= #{year}, notes= #{notes}, name= #{name} where id=#{id}")
-        @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-        //give me id of this inserting
-       void update(Employee employee);
+    @Update("Update Employee set name= #{name}, processId= #{processId}" +
+            ", flowId= #{flowId}, idempotenceUuid= #{idempotenceUuid}, cv_file= #{cv_file} " +
+            "  where id=#{id}")
+    @Options(useGeneratedKeys = true, keyProperty = "name", keyColumn = "name")
+    void update(Employee employee);
 
+    @Result(column = "id", property = "id")
+    @Select("SELECT * FROM Employee WHERE id = #{id}")
+    Employee getById(@Param("id") Long id);
 
 
 //
@@ -24,9 +30,7 @@ public interface EmployeeRepositoty {
 //        @Delete("Delete from Song where name=#{name}")
 //        void deleteByName(String name);
 //
-//        @Result(column = "year", property = "year")
-//        @Select("SELECT * FROM Song WHERE id = #{id}")
-//        Song findById(@org.springframework.data.repository.query.Param("id") Long id);
+
 //
 //        @Select("SELECT * FROM Song")
 //        List<Song> finedAllSongs();
